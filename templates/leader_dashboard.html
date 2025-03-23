@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ team.name }} Dashboard - ChurchSync</title>
+</head>
+<body>
+    <h1>{{ team.name }} Dashboard</h1>
+    <h2>Members</h2>
+    <ul>
+        {% for member in team_members %}
+            <li>{{ member.user.email }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
