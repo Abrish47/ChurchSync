@@ -17,3 +17,12 @@ class TeamMember(models.Model):
 
     def __str__(self):
         return f"{self.user.email} in {self.team.name}"
+    
+class Announcement(models.Model):
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    posted_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.content[:20]}... by {self.posted_by.email}"

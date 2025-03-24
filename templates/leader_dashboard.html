@@ -12,5 +12,7 @@
             <li>{{ member.user.email }}</li>
         {% endfor %}
     </ul>
+    <a href="{% url 'member_directory' %}">Member Directory</a> <!-- Added here -->
+    <a href="{% url 'announcements' team.id %}">View Announcements</a> <!-- Added here -->
 </body>
 </html>

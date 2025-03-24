@@ -22,5 +22,6 @@
             <li>{{ team.name }} (Leader: {{ team.leader.email }})</li>
         {% endfor %}
     </ul>
+    <a href="{% url 'member_directory' %}">Member Directory</a> <!-- Added here -->
 </body>
 </html>

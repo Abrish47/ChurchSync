@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Announcements - {{ team.name }}</title>
+</head>
+<body>
+    <h1>{{ team.name }} Announcements</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="content" required></textarea>
+        <button type="submit">Post</button>
+    </form>
+    <ul>
+        {% for announcement in announcements %}
+            <li>{{ announcement.content }} (by {{ announcement.posted_by.email }} on {{ announcement.created_at }})</li>
+        {% endfor %}
+    </ul>
+    <a href="/dashboard/teams/{{ team.id }}/">Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Directory - ChurchSync</title>
+</head>
+<body>
+    <h1>Member Directory</h1>
+    <ul>
+        {% for member in members %}
+            <li>{{ member.email }} - {{ member.role }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% if request.user.role == 'admin' %}/dashboard/admin/{% else %}/dashboard/teams/{{ request.user.led_teams.first.id }}/{% endif %}">Back to Dashboard</a>
+</body>
+</html>
