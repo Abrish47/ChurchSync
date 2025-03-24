@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from users.views import login_view
+from users.views import admin_dashboard
+from teams.views import leader_dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', login_view, name='login'),
+    path('dashboard/admin/', admin_dashboard, name='admin_dashboard'),
+    path('dashboard/teams/<int:team_id>/', leader_dashboard, name='leader_dashboard'),
 ]
