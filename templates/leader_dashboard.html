@@ -1,8 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ team.name }} Dashboard - ChurchSync</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <h1>{{ team.name }} Dashboard</h1>
@@ -12,7 +14,7 @@
             <li>{{ member.user.email }}</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'member_directory' %}">Member Directory</a> <!-- Added here -->
-    <a href="{% url 'announcements' team.id %}">View Announcements</a> <!-- Added here -->
+    <a href="{% url 'member_directory' %}">Member Directory</a>
+    <a href="{% url 'announcements' team.id %}">View Announcements</a>
 </body>
 </html>

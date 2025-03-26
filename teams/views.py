@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from .models import TeamMember
-from .models import Team
-from .models import User, Announcement
+from .models import Team, Announcement
+from users.models import User
 
 # Create your views here.
 def leader_dashboard(request, team_id):
