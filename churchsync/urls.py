@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from users.views import login_view
+from users.views import login_view, approve_user
 from users.views import admin_dashboard, member_dashboard
 from teams.views import leader_dashboard, member_directory
 from teams.views import announcements
@@ -29,4 +29,5 @@ urlpatterns = [
     path('directory/', member_directory, name='member_directory'),
     path('teams/<int:team_id>/announcements/', announcements, name='announcements'),
     path('dashboard/member/', member_dashboard, name='member_dashboard'),
+    path('approve/<int:user_id>/', approve_user, name='approve_user'),
 ]

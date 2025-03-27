@@ -13,7 +13,7 @@
         {% for user in users %}
             <li>{{ user.email }} - {{ user.role }}
                 {% if not user.is_approved %}
-                    <a href="#">Approve</a>
+                    <a href="{% url 'approve_user' user.id %}">Approve</a>
                 {% endif %}
             </li>
         {% endfor %}
