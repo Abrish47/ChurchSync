@@ -1,12 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Announcements - {{ team.name }}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} Announcements - {{ team.name }} {% endblock %}
+
+{%block content%}
     <h1>{{ team.name }} Announcements</h1>
     <form method="POST">
         {% csrf_token %}
@@ -19,5 +15,4 @@
         {% endfor %}
     </ul>
     <a href="/dashboard/teams/{{ team.id }}/">Back to Dashboard</a>
-</body>
-</html>
+{% endblock %}

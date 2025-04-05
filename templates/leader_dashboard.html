@@ -1,12 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ team.name }} Dashboard - ChurchSync</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} {{ team.name }} Dashboard - ChurchSync {% endblock %}
+
+{% block content %}
     <h1>{{ team.name }} Dashboard</h1>
     <h2>Members</h2>
     <ul>
@@ -16,5 +12,4 @@
     </ul>
     <a href="{% url 'member_directory' %}">Member Directory</a>
     <a href="{% url 'announcements' team.id %}">View Announcements</a>
-</body>
-</html>
+{% endblock %}

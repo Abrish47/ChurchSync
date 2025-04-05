@@ -1,9 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Member Directory - ChurchSync</title>
+{% extends 'base.html' %}
+
+{% block title %} Member Directory - ChurchSync {% endblock %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
@@ -14,5 +11,4 @@
         {% endfor %}
     </ul>
     <a href="{% if request.user.role == 'admin' %}/dashboard/admin/{% else %}/dashboard/teams/{{ request.user.led_teams.first.id }}/{% endif %}">Back to Dashboard</a>
-</body>
-</html>
+{% endblock %}

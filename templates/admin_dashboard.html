@@ -1,12 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Admin Dashboard - ChurchSync</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} Admin Dashboard - ChurchSync {% endblock %}
+
+{% block content %}
     <h1>Admin Dashboard</h1>
     <h2>Users</h2>
     <ul>
@@ -25,5 +20,4 @@
         {% endfor %}
     </ul>
     <a href="{% url 'member_directory' %}">Member Directory</a>
-</body>
-</html>
+{% endblock %}
