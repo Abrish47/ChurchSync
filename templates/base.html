@@ -1,3 +1,4 @@
+<!-- churchsync/templates/base.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -11,13 +12,28 @@
         <h1>ChurchSync</h1>
     </header>
     <nav>
-        <a href="{% url 'dashboard' %}">Dashboard</a> |
-        <a href="{% url 'member_directory' %}">Member Directory</a> |
-        {% if user.is_authenticated and user.role == 'leader' %}
-            <a href="{% url 'announcements' team_id=user.led_teams.first.id %}">Announcements</a> |
-        {% endif %}
         {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">Logout</a>
+            {% if user.role == 'admin' %}
+                <a href="{% url 'admin_dashboard' %}">Dashboard</a> |
+            {% elif user.role == 'leader' %}
+                {% if user.led_teams.exists %}
+                    <a href="{% url 'leader_dashboard' user.led_teams.first.id %}">Dashboard</a> |
+                {% else %}
+                    <a href="#">No Team Assigned</a> |
+                {% endif %}
+            {% elif user.role == 'member' %}
+                <a href="{% url 'member_dashboard' %}">Dashboard</a> |
+            {% endif %}
+            <a href="{% url 'member_directory' %}">Member Directory</a> |
+            {% if user.role == 'leader' %}
+                {% if user.led_teams.exists %}
+                    <a href="{% url 'announcements' user.led_teams.first.id %}">Announcements</a> |
+                {% endif %}
+            {% endif %}
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="nav-logout">Logout</button>
+            </form>
         {% else %}
             <a href="{% url 'login' %}">Login</a>
         {% endif %}

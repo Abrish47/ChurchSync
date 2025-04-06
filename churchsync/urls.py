@@ -20,10 +20,12 @@ from users.views import login_view, approve_user
 from users.views import admin_dashboard, member_dashboard
 from teams.views import leader_dashboard, member_directory
 from teams.views import announcements
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login_view, name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     path('dashboard/admin/', admin_dashboard, name='admin_dashboard'),
     path('dashboard/teams/<int:team_id>/', leader_dashboard, name='leader_dashboard'),
     path('directory/', member_directory, name='member_directory'),

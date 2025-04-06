@@ -3,7 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import login
 from django.contrib.auth import authenticate
 from .models import User
-from teams.models import Team
+from teams.models import Team,TeamMember, Announcement
 
 # Create your views here.
 
@@ -58,4 +58,16 @@ def member_directory(request):
 def member_dashboard(request):
     if not request.user.is_authenticated or request.user.role != 'member':
         return redirect('login')
-    return render(request, 'member_dashboard.html', {'user': request.user})
+    
+    # Get teams the user is a member of
+    team_memberships = TeamMember.objects.filter(user=request.user)
+    team_ids = team_memberships.values_list('team_id', flat=True)
+    
+    # Get announcements for those teams
+    announcements = Announcement.objects.filter(team__id__in=team_ids).order_by('-created_at')
+    
+    context = {
+        'user': request.user,
+        'announcements': announcements,
+    }
+    return render(request, 'member_dashboard.html', context)

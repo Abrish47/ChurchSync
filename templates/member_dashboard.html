@@ -1,8 +1,19 @@
 {% extends 'base.html' %}
 
-{% block title %} Member Dashboard - ChurchSync {% endblock %}
+{% block title %}Member Dashboard - ChurchSync{% endblock %}
 
 {% block content %}
-    <h1>Welcome, {{ user.email }}</h1>
-    <p>You are a {{ user.role }}. More features coming soon!</p>
+    <h2>Welcome, {{ user.email }}</h2>
+    <p>You are a {{ user.role }}.</p>
+    
+    {% if announcements %}
+        <h3>Team Announcements</h3>
+        <ul class="announcement-list">
+            {% for announcement in announcements %}
+                <li>{{ announcement.content }} (by {{ announcement.posted_by.email }} on {{ announcement.created_at }}) - {{ announcement.team.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No announcements yet. Stay tuned for updates from your team leaders!</p>
+    {% endif %}
 {% endblock %}

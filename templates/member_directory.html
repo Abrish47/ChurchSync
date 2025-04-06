@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 
 {% block title %} Member Directory - ChurchSync {% endblock %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+
+{% block content %}
     <h1>Member Directory</h1>
     <ul>
         {% for member in members %}
