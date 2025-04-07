@@ -1,61 +1,61 @@
-# ChurchSync: A Role Base Church Manage Platform
+# ChurchSync: A Role-Based Church Management Platform
 
-Hello! This ChurchSync, a web app I make to help church people manage their member, team, and talk easy. I build it with Django, it work good for church leader, admin, and member. It simple but strong, can grow big later if want.
+Hey! This is ChurchSync, a web app I built to help churches manage their members, teams, and communication better. I used Django for it, and it’s pretty solid for admins, leaders, and members to use. It’s simple but can grow bigger later if needed.
 
-## What it Do
-ChurchSync help church to:
-- Login safe with email and password.
-- Give admin power to check new people and make team.
-- Let leader handle their team like Youth or Worship, add or remove member.
-- Show member list but only what you allow to see.
-- Post message for team so everyone know what happen.
+## What It Does
+ChurchSync is made to:
+- Let people log in safe with email and password.
+- Give admins control to approve users and set up teams.
+- Help leaders manage their teams (like Youth or Worship), add or remove members.
+- Show a member list, but only what your role lets you see.
+- Let leaders post announcements for their team to keep everyone updated.
 
-## How to Setup
-You need computer with Python and internet. Follow this step:
+## How to Set It Up
+You’ll need Python on your computer and internet. Here’s how to get it running:
 
-1. **Get the Code**:  
-   Type this in your computer terminal:
-     git clone https://github.com/Abrish47/ChurchSync.git
+1. **Grab the Code**:  
+   Open your terminal and type:
+    git clone https://github.com/Abrish47/ChurchSync.git
 
-2. **Install Things**:  
-You need some Python stuff. Type:
-pip install -r requirements.txt
+2. **Install Stuff**:  
+Get the things it needs with:
+  pip install -r requirements.txt
 
-It get all thing app need.
 
-3. **Make Database**:  
-Tell Django to set up place for data:
+3. **Set Up Database**:  
+Tell Django to make the data space:
 python manage.py migrate
 
 
-4. **Make Admin**:  
-You need boss account to start. Type:
- python manage.py createsuperuser
+4. **Make an Admin**:  
+You need a main account to start. Run:
+   python manage.py createsuperuser
 
-Put email like `admin@test.com` and password like `testpass123`.
+Use something like `admin@test.com` and `testpass123` for email and password.
 
-5. **Run App**:  
-Start it with:
+5. **Start It**:  
+Run this:
 python manage.py runserver
 
-Then open browser, go `http://127.0.0.1:8000/`. It work!
+Then go to `http://127.0.0.1:8000/` in your browser—it’s live!
 
-## How to Use
-- **Admin**: Login with boss account (`admin@test.com`). You see all team, approve new people.  
-- **Leader**: Login like `leader@test.com`. You only see your team, add member, post message.  
-- **Member**: Login like `member@test.com`. You see small thing, no big power.  
-- Go `/login/` to start, then play with dashboard, team, and list.
+## How to Use It
+- **Admin**: Log in with `admin@test.com`. You can approve people and see all teams.  
+- **Leader**: Use `leader@test.com`. You manage your team, add members, post stuff.  
+- **Member**: Try `member@test.com`. You get a basic view, no big controls.  
+- Start at `/login/`, then check out dashboards, teams, or the member list.
 
-## Feature I Make
-- **Login**: Use email and password, safe for all.  
-- **Dashboard**: Different for admin, leader, member.  
-- **Team Work**: Leader can add or kick member in their team.  
-- **Member List**: Show people but only what your role can see.  
-- **Message**: Leader post news for team, like “Meeting Sunday”.  
+## Features I Added
+- **Login**: Email and password, works for everyone.  
+- **Dashboards**: Different ones for admin, leader, member.  
+- **Team Management**: Leaders can add or kick members from their team.  
+- **Member Directory**: Shows members based on your role.  
+- **Announcements**: Leaders post updates like “Meeting Sunday” for their team.  
 
-## Note
-- I use Django and SQLite, it easy to start.  
-- Some small problem maybe there, like list not fast update, but it still good.  
-- Can add more later, like event or money thing, but not now.  
+## Extra Notes
+- Built with Django and SQLite, keeps it easy to start.  
+- Might have small bugs—like the list not updating fast—but it’s still good.  
+- Could add more later, like events or finance stuff, but not yet.  
 
-Thank you! This my project, I happy it work. Check my video too if you want see it live!
+Thanks for checking it out! I’m happy with how it turned out. You can see it in action in my video too if you want.
+
