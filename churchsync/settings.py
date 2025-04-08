@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-&t+kd%7p*p%(p2s5@r83r&usedu)vdf)k_2x3d*1%w6fj!gr_n
 # Debug mode - off for submission, hides errors for safety
 DEBUG = False
 
-ALLOWED_HOSTS = []
+# Who can visit the site - set for local testing
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
