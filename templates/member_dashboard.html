@@ -1,19 +1,21 @@
-{% extends 'base.html' %}
+<!-- This is the member dashboard - welcomes them and shows team announcements -->
+{% extends 'base.html' %}  <!-- Uses the main layout -->
 
-{% block title %}Member Dashboard - ChurchSync{% endblock %}
+{% block title %}Member Dashboard - ChurchSync{% endblock %}  <!-- Page title -->
 
 {% block content %}
-    <h2>Welcome, {{ user.email }}</h2>
-    <p>You are a {{ user.role }}.</p>
+    <h2>Welcome, {{ user.email }}</h2>  <!-- Greets the member -->
+    <p>You are a {{ user.role }}.</p>  <!-- Shows their role -->
     
     {% if announcements %}
-        <h3>Team Announcements</h3>
+        <h3>Team Announcements</h3>  <!-- Announcement section -->
         <ul class="announcement-list">
             {% for announcement in announcements %}
+                <!-- Show message, who posted it, when, and team -->
                 <li>{{ announcement.content }} (by {{ announcement.posted_by.email }} on {{ announcement.created_at }}) - {{ announcement.team.name }}</li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>No announcements yet. Stay tuned for updates from your team leaders!</p>
+        <p>No announcements yet. Stay tuned for updates from your team leaders!</p>  <!-- If nothing to show -->
     {% endif %}
 {% endblock %}

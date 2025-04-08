@@ -1,48 +1,51 @@
-<!-- churchsync/templates/base.html -->
-{% load static %}
+<!-- This is the main layout for all pages - header, nav, and footer -->
+{% load static %}  <!-- Lets me use CSS files -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}ChurchSync{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{% block title %}ChurchSync{% endblock %}</title>  <!-- Title changes per page -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">  <!-- Pulls in my CSS -->
 </head>
 <body>
     <header>
-        <h1>ChurchSync</h1>
+        <h1>ChurchSync</h1>  <!-- Big title at the top -->
     </header>
     <nav>
+        <!-- Nav bar changes based on who’s logged in -->
         {% if user.is_authenticated %}
             {% if user.role == 'admin' %}
-                <a href="{% url 'admin_dashboard' %}">Dashboard</a> |
+                <a href="{% url 'admin_dashboard' %}">Dashboard</a> |  <!-- Admin dashboard link -->
             {% elif user.role == 'leader' %}
                 {% if user.led_teams.exists %}
-                    <a href="{% url 'leader_dashboard' user.led_teams.first.id %}">Dashboard</a> |
+                    <a href="{% url 'leader_dashboard' user.led_teams.first.id %}">Dashboard</a> |  <!-- Leader’s team dashboard -->
                 {% else %}
-                    <a href="#">No Team Assigned</a> |
+                    <a href="#">No Team Assigned</a> |  <!-- If leader has no team -->
                 {% endif %}
             {% elif user.role == 'member' %}
-                <a href="{% url 'member_dashboard' %}">Dashboard</a> |
+                <a href="{% url 'member_dashboard' %}">Dashboard</a> |  <!-- Member dashboard link -->
             {% endif %}
-            <a href="{% url 'member_directory' %}">Member Directory</a> |
+            <a href="{% url 'member_directory' %}">Member Directory</a> |  <!-- Link to see members -->
             {% if user.role == 'leader' %}
                 {% if user.led_teams.exists %}
-                    <a href="{% url 'announcements' user.led_teams.first.id %}">Announcements</a> |
+                    <a href="{% url 'announcements' user.led_teams.first.id %}">Announcements</a> |  <!-- Leader’s announcement page -->
                 {% endif %}
             {% endif %}
+            <!-- Logout button - uses a form so it’s safe -->
             <form action="{% url 'logout' %}" method="post" style="display: inline;">
-                {% csrf_token %}
+                {% csrf_token %}  <!-- Security thing for forms -->
                 <button type="submit" class="nav-logout">Logout</button>
             </form>
         {% else %}
-            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'login' %}">Login</a>  <!-- Login link if not signed in -->
         {% endif %}
     </nav>
     <div class="content">
-        {% block content %}{% endblock %}
+        {% block content %}{% endblock %}  <!-- Where each page’s stuff goes -->
     </div>
     <footer>
-        <p>© 2025 ChurchSync. Built by Abraham Kifle.</p>
+        <p>© 2025 ChurchSync. Built by Abraham Kifle.</p>  <!-- Bottom note -->
     </footer>
 </body>
 </html>

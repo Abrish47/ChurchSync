@@ -1,15 +1,16 @@
-{% extends 'base.html' %}
+<!-- This is the leader dashboard - shows team members -->
+{% extends 'base.html' %}  <!-- Uses the main layout -->
 
-{% block title %} {{ team.name }} Dashboard - ChurchSync {% endblock %}
+{% block title %} {{ team.name }} Dashboard - ChurchSync {% endblock %}  <!-- Page title with team name -->
 
 {% block content %}
-    <h1>{{ team.name }} Dashboard</h1>
-    <h2>Members</h2>
+    <h1>{{ team.name }} Dashboard</h1>  <!-- Header with team name -->
+    <h2>Members</h2>  <!-- Members section -->
     <ul>
         {% for member in team_members %}
-            <li>{{ member.user.email }}</li>
+            <li>{{ member.user.email }}</li>  <!-- Show each member’s email -->
         {% endfor %}
     </ul>
-    <a href="{% url 'member_directory' %}">Member Directory</a>
-    <a href="{% url 'announcements' team.id %}">View Announcements</a>
+    <a href="{% url 'member_directory' %}">Member Directory</a>  <!-- Link to member list -->
+    <a href="{% url 'announcements' team.id %}">View Announcements</a>  <!-- Link to announcements -->
 {% endblock %}

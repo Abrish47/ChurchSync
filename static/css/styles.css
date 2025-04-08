@@ -1,54 +1,55 @@
+/* This styles the whole site - fonts, colors, layout */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+    font-family: Arial, sans-serif;  /* Nice, simple font */
+    margin: 0;  /* No extra space around edges */
 }
 header {
-    text-align: center;
-    padding: 20px;
-    background-color: #f0f0f0;
+    text-align: center;  /* Center the title */
+    padding: 20px;  /* Space inside header */
+    background-color: #f0f0f0;  /* Light gray background */
 }
 nav {
-    background-color: #333;
-    padding: 10px;
+    background-color: #333;  /* Dark gray for nav bar */
+    padding: 10px;  /* Space inside nav */
 }
 nav a {
-    color: white;
-    margin-right: 15px;
+    color: white;  /* White text for links */
+    margin-right: 15px;  /* Space between links */
 }
 .content {
-    padding: 20px;
+    padding: 20px;  /* Space around main stuff */
 }
 footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #f0f0f0;
+    text-align: center;  /* Center the footer text */
+    padding: 10px;  /* Space inside footer */
+    background-color: #f0f0f0;  /* Light gray like header */
 }
 h1 {
-    color: #333;
+    color: #333;  /* Dark gray for big headers */
 }
 ul {
-    list-style-type: none;
-    padding: 0;
+    list-style-type: none;  /* No bullets on lists */
+    padding: 0;  /* No extra space inside lists */
 }
 li {
-    padding: 5px 0;
+    padding: 5px 0;  /* Space between list items */
 }
 .error {
-    color: red;
+    color: red;  /* Red for error messages */
 }
 form {
-    margin-top: 10px;
+    margin-top: 10px;  /* Space above forms */
 }
 .nav-logout {
-    background: none;
-    border: none;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0;
-    margin: 0 15px;
-    cursor: pointer;
+    background: none;  /* No background for logout button */
+    border: none;  /* No border */
+    color: white;  /* White text like links */
+    text-decoration: none;  /* No underline */
+    font-weight: bold;  /* Make it stand out */
+    padding: 0;  /* No extra padding */
+    margin: 0 15px;  /* Space like other nav links */
+    cursor: pointer;  /* Hand icon on hover */
 }
 .nav-logout:hover {
-    text-decoration: underline;
+    text-decoration: underline;  /* Underline when you hover */
 }

@@ -1,18 +1,21 @@
-{% extends 'base.html' %}
+<!-- This is the announcements page for leaders - post and see team messages -->
+{% extends 'base.html' %}  <!-- Uses the main layout -->
 
-{% block title %} Announcements - {{ team.name }} {% endblock %}
+{% block title %} Announcements - {{ team.name }} {% endblock %}  <!-- Page title with team name -->
 
-{%block content%}
-    <h1>{{ team.name }} Announcements</h1>
+{% block content %}
+    <h1>{{ team.name }} Announcements</h1>  <!-- Header with team name -->
+    <!-- Form to post a new announcement -->
     <form method="POST">
-        {% csrf_token %}
-        <textarea name="content" required></textarea>
-        <button type="submit">Post</button>
+        {% csrf_token %}  <!-- Security for forms -->
+        <textarea name="content" required></textarea>  <!-- Where leader types message -->
+        <button type="submit">Post</button>  <!-- Submit button -->
     </form>
     <ul>
         {% for announcement in announcements %}
+            <!-- Show each message with who posted and when -->
             <li>{{ announcement.content }} (by {{ announcement.posted_by.email }} on {{ announcement.created_at }})</li>
         {% endfor %}
     </ul>
-    <a href="/dashboard/teams/{{ team.id }}/">Back to Dashboard</a>
+    <a href="/dashboard/teams/{{ team.id }}/">Back to Dashboard</a>  <!-- Link back to leader dashboard -->
 {% endblock %}

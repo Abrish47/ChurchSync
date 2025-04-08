@@ -1,26 +1,30 @@
 # users/admin.py
+# This sets up how admins see and manage users in the admin site
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import User
 
+# Custom admin setup for my User model
 class UserAdmin(BaseUserAdmin):
-    # Fields to display in the admin list view
-    list_display = ('email', 'role', 'is_approved', 'is_active')
-    list_filter = ('role', 'is_approved', 'is_active')
-    search_fields = ('email',)
+    # What shows in the user list
+    list_display = ('email', 'role', 'is_approved', 'is_active')  # Columns to see
+    list_filter = ('role', 'is_approved', 'is_active')  # Filter options
+    search_fields = ('email',)  # Search by email
     
-    # Fields to show in the edit form
+    # What shows when editing a user
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
-        ('Personal Info', {'fields': ('first_name', 'last_name')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'role', 'is_approved')}),
+        (None, {'fields': ('email', 'password')}),  # Basic login stuff
+        ('Personal Info', {'fields': ('first_name', 'last_name')}),  # Name fields
+        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'role', 'is_approved')}),  # Control access
     )
+    # What shows when adding a new user
     add_fieldsets = (
         (None, {
-            'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2', 'role', 'is_approved'),
+            'classes': ('wide',),  # Makes form wider
+            'fields': ('email', 'password1', 'password2', 'role', 'is_approved'),  # Fields to fill
         }),
     )
-    ordering = ('email',)
+    ordering = ('email',)  # Sort by email
 
+# Hook it up to the admin site
 admin.site.register(User, UserAdmin)

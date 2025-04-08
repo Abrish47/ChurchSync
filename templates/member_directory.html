@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
+<!-- This shows the member list - who you see depends on your role -->
+{% extends 'base.html' %}  <!-- Uses the main layout -->
 
-{% block title %} Member Directory - ChurchSync {% endblock %}
+{% block title %} Member Directory - ChurchSync {% endblock %}  <!-- Page title -->
 
 {% block content %}
-    <h1>Member Directory</h1>
+    <h1>Member Directory</h1>  <!-- Main header -->
     <ul>
         {% for member in members %}
-            <li>{{ member.email }} - {{ member.role }}</li>
+            <li>{{ member.email }} - {{ member.role }}</li>  <!-- Show each member’s email and role -->
         {% endfor %}
     </ul>
+    <!-- Link back to dashboard based on role -->
     <a href="{% if request.user.role == 'admin' %}/dashboard/admin/{% else %}/dashboard/teams/{{ request.user.led_teams.first.id }}/{% endif %}">Back to Dashboard</a>
 {% endblock %}

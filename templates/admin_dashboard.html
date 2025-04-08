@@ -1,23 +1,25 @@
-{% extends 'base.html' %}
-{% block title %} Admin Dashboard - ChurchSync {% endblock %}
+<!-- This is the admin dashboard - shows users and teams -->
+{% extends 'base.html' %}  <!-- Uses the main layout -->
+
+{% block title %} Admin Dashboard - ChurchSync {% endblock %}  <!-- Page title -->
 
 {% block content %}
-    <h1>Admin Dashboard</h1>
-    <h2>Users</h2>
+    <h1>Admin Dashboard</h1>  <!-- Main header -->
+    <h2>Users</h2>  <!-- User section -->
     <ul>
         {% for user in users %}
-            <li>{{ user.email }} - {{ user.role }}
+            <li>{{ user.email }} - {{ user.role }}  <!-- Show email and role -->
                 {% if not user.is_approved %}
-                    <a href="{% url 'approve_user' user.id %}">Approve</a>
+                    <a href="{% url 'approve_user' user.id %}">Approve</a>  <!-- Link to approve if needed -->
                 {% endif %}
             </li>
         {% endfor %}
     </ul>
-    <h2>Teams</h2>
+    <h2>Teams</h2>  <!-- Team section -->
     <ul>
         {% for team in teams %}
-            <li>{{ team.name }} (Leader: {{ team.leader.email }})</li>
+            <li>{{ team.name }} (Leader: {{ team.leader.email }})</li>  <!-- Show team and leader -->
         {% endfor %}
     </ul>
-    <a href="{% url 'member_directory' %}">Member Directory</a>
+    <a href="{% url 'member_directory' %}">Member Directory</a>  <!-- Link to member list -->
 {% endblock %}

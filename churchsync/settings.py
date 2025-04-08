@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&t+kd%7p*p%(p2s5@r83r&usedu)vdf)k_2x3d*1%w6fj!gr_n'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Debug mode - off for submission, hides errors for safety
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'users.apps.UsersConfig',
-    'teams.apps.TeamsConfig', 
+    'rest_framework',    # For APIs (not used yet)
+    'users.apps.UsersConfig',   # My users app
+    'teams.apps.TeamsConfig',   # My teams app
 ]
 
 MIDDLEWARE = [
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Where all the URLs are listed
 ROOT_URLCONF = 'churchsync.urls'
 
 TEMPLATES = [
@@ -84,6 +85,7 @@ DATABASES = {
     }
 }
 
+# Custom user model from my users app
 AUTH_USER_MODEL = 'users.User'
 
 
@@ -121,10 +123,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+# Where CSS and images go
+STATIC_URL = '/static/'   # URL for static files
+STATICFILES_DIRS = [BASE_DIR / 'static']   # Folder for my CSS
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
+# Default ID type for models
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
